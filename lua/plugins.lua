@@ -40,7 +40,13 @@ vim.cmd.colorscheme("nord")
 require("oil").setup({})
 require("nvim-tree").setup({
   view = { width = 30 },
-  renderer = { icons = { show = { git = false, diagnostics = false } } }
+  renderer = { 
+    icons = { show = { git = false, diagnostics = false } }
+  },
+  filters = {
+    dotfiles = false,  -- Show hidden files by default
+    custom = { ".git", "node_modules", ".cache" }  -- Still hide these specific ones
+  }
 })
 require("telescope").setup({
   defaults = { sorting_strategy = "ascending", layout_config = { prompt_position = "top" } },
